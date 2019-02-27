@@ -1,0 +1,31 @@
+---
+output: 
+  html_document:
+    css: styles.css
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+
+library(tidyverse)
+library(kableExtra)
+```
+
+Legal states 
+
+```{r}
+states <- tibble(
+  state = c("AK", "WA", "OR", "CA", "NV", "CO", "MI", "VT", "ME", "MA", "DC"), 
+  year_passed = c(2014, 2012, 2014, 2016, 2016, 2012, 2018, 2018, 2016, 2016, 2015)
+)
+
+states %>% 
+  arrange(year_passed, state) %>% 
+  kable(caption = "Table 1: States with RML" ,
+        booktabs = TRUE, col.names = c("State", "Year passed"), 
+        align = c("c", "c")) %>% 
+  kable_styling(full_width = FALSE, bootstrap_options = "condensed") %>% 
+  column_spec(1:2, background = "#FFFBF5") %>% 
+  row_spec(0, background = "#FFFBF5") %>% 
+  row_spec(0:11, color = "black")
+```
