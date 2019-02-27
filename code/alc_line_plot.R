@@ -18,7 +18,8 @@ co <- mj %>%
   geom_smooth() + 
   geom_line(data = us, linetype = "dashed") + 
   labs(title = "Colorado") + 
-  theme_minimal()
+  theme_minimal() + 
+  theme(text = element_text(family = "Roboto Condensed")) 
 
 wash <- mj %>% 
   filter(state == "wash", drug == "alcohol") %>% 
@@ -26,7 +27,8 @@ wash <- mj %>%
   geom_smooth() + 
   geom_line(data = us, linetype = "dashed") + 
   labs(title = "Washington") + 
-  theme_minimal()
+  theme_minimal() + 
+  theme(text = element_text(family = "Roboto Condensed")) 
 
 or <- mj %>% 
   filter(state == "oregon", drug == "alcohol") %>% 
@@ -34,14 +36,16 @@ or <- mj %>%
   geom_smooth() + 
   geom_line(data = us, linetype = "dashed") + 
   labs(title = "Oregon") + 
-  theme_minimal()
+  theme_minimal() + 
+  theme(text = element_text(family = "Roboto Condensed")) 
 
 ak <- mj %>% 
   filter(state == "alaska", drug == "alcohol") %>% 
   ggplot(aes(x = year, y = percent, color = age)) + 
   geom_smooth() + 
   geom_line(data = us, linetype = "dashed") + 
-  labs(title = "Alaksa") +
-  theme_minimal()
+  labs(title = "Alaksa") + 
+  theme_minimal() + 
+  theme(text = element_text(family = "Roboto Condensed")) 
 
 (co + wash) / (or + ak)
